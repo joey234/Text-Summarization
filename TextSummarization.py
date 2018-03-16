@@ -18,7 +18,6 @@ def getSum(filename, article):
     res = '@Approach_1 \n' 
     res = res + outputBaseline1(filename) + '\n'
     res = res + '@Approach_2 \n' + outputBaseline2(article) + '\n'
-    print(outputBaseline2(article))
     res = res + '@Approach_3 \n' + outputBaseline3(article)
     return res
 
