@@ -74,7 +74,7 @@ class BeamSearchDecoder(object):
       if not os.path.exists(self._rouge_dec_dir): os.mkdir(self._rouge_dec_dir)
 
 
-  def decode(self):
+  def decode(self, num_file):
     """Decode examples until data is exhausted (if FLAGS.single_pass) and return, or decode indefinitely, loading latest checkpoint at regular intervals"""
     t0 = time.time()
     counter = 0
@@ -113,8 +113,11 @@ class BeamSearchDecoder(object):
       if FLAGS.new_file:
         self.write_decoded(decoded_words,counter)
         counter +=1
-        break
-      if FLAGS.single_pass:
+        if counter == num_file:
+          break
+        
+      elif FLAGS.single_pass:
+        #self.write_decoded(decoded_words,counter)
         self.write_for_rouge(original_abstract_sents, decoded_words, counter) # write ref summary and decoded summary to file, to eval with pyrouge later
         counter += 1 # this is how many examples we've decoded
       else:

@@ -74,7 +74,6 @@ tf.app.flags.DEFINE_boolean('debug', False, "Run in tensorflow's debug mode (wat
 
 tf.app.flags.DEFINE_boolean('new_file',False, "Getting summary for new files")
 
-
 def calc_running_avg_loss(loss, running_avg_loss, summary_writer, step, decay=0.99):
   """Calculate the running average loss via exponential decay.
   This is used to implement early stopping w.r.t. a more smooth loss curve than the raw loss curve.
@@ -304,6 +303,10 @@ def main(unused_argv):
   batcher = Batcher(FLAGS.data_path, vocab, hps, single_pass=FLAGS.single_pass)
 
   tf.set_random_seed(111) # a seed value for randomness
+  print(FLAGS.data_path)
+  data_dir = FLAGS.data_path.replace('chunked/test_*.bin', '')
+  print(data_dir)
+  num_file = len(os.listdir(data_dir))
 
   if hps.mode == 'train':
     print("creating model...")
@@ -317,7 +320,7 @@ def main(unused_argv):
     decode_model_hps = hps._replace(max_dec_steps=1) # The model is configured with max_dec_steps=1 because we only ever run one step of the decoder at a time (to do beam search). Note that the batcher is initialized with max_dec_steps equal to e.g. 100 because the batches need to contain the full summaries
     model = SummarizationModel(decode_model_hps, vocab)
     decoder = BeamSearchDecoder(model, batcher, vocab)
-    decoder.decode() # decode indefinitely (unless single_pass=True, in which case deocde the dataset exactly once)
+    decoder.decode(num_file) # decode indefinitely (unless single_pass=True, in which case deocde the dataset exactly once)
   else:
     raise ValueError("The 'mode' flag must be one of train/eval/decode")
 

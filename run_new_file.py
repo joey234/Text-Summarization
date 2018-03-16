@@ -31,7 +31,7 @@ def main(argv):
     bin_input_dir = 'tokenized_stories/finished_files/chunked/test_*.bin'
 
     
-    decode_command = 'python run_summarization.py --log_root=' + log_dir + ' --exp_name=' + exp_name +  ' --vocab_path=' + vocab_path + ' --mode=decode' + ' --data_path='+ bin_input_dir + ' --new_file=' + new_file_flag
+    decode_command = 'python run_summarization.py --log_root=' + log_dir + ' --exp_name=' + exp_name +  ' --vocab_path=' + vocab_path + ' --mode=decode' + ' --data_path='+ bin_input_dir +' --new_file=' +new_file_flag
     os.system(decode_command)
 
 
