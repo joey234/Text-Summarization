@@ -9,9 +9,7 @@ cd Text-Summarization
 
 Pre-trained model link: https://www.dropbox.com/s/0arsrsaybbv5etw/pretrained_model_tf1.2.1.rar?dl=0
 
-Download pre-trained model and put it inside 
-
-Text-Summarization/log
+Download pre-trained model and put it inside Text-Summarization/log
 
 How to run
 
