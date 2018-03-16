@@ -1,0 +1,2 @@
+./stories\cnn-01.txt 	 tokenized_stories\tokenized_stories_dir\cnn-01.txt
+./stories\output.txt 	 tokenized_stories\tokenized_stories_dir\output.txt
