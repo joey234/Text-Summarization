@@ -4,8 +4,6 @@ Clone Project
 
 git clone https://github.com/joey234/Text-Summarization.git
 
-cd Text-Summarization
-
 
 Pre-trained model link: https://www.dropbox.com/s/0arsrsaybbv5etw/pretrained_model_tf1.2.1.rar?dl=0
 
@@ -16,6 +14,8 @@ How to run
 Python version 3.x
 
 Install Python packages:
+
+cd Text-Summarization
 
 pip install -r requirements.txt
 
