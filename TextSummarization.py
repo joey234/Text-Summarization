@@ -24,7 +24,7 @@ def getSum(filename, article):
 def main():
     argument_list = sys.argv
     path = argument_list[1]
-    preproces_command = 'python ./make_datafiles/make_datafiles.py ' + path + ' ' + 'tokenized_stories'
+    preproces_command = 'python ./make_datafile/make_datafiles.py ' + path + ' ' + 'tokenized_stories'
     os.system(preproces_command)
     bin_input_dir = 'tokenized_stories/finished_files/chunked/test_*.bin'
     run_baseline1 = 'python run_summarization.py --log_root=log --exp_name=pretrained_model_tf1.2.1 --vocab_path=vocab --mode=decode --data_path='+ bin_input_dir + ' --new_file=True'
